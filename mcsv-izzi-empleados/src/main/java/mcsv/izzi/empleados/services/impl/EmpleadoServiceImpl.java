@@ -63,7 +63,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 
 		resultado.put("Empleados",empleados);
 		List<Usuarios> users = feignClient.getUsers(usuarioId);
-		if(users.isEmpty()) {
+		if(users == null) {
 			resultado.put("Usuarios", "El empleado no tiene usuarios relacionados");
 		}
 		else {
