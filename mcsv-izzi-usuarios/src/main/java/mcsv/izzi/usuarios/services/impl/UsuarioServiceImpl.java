@@ -10,36 +10,24 @@ import org.springframework.stereotype.Service;
 import mcsv.izzi.usuarios.entity.Usuarios;
 import mcsv.izzi.usuarios.repository.UsuarioRepository;
 import mcsv.izzi.usuarios.services.UsuarioService;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 
 	final private UsuarioRepository repository;
 
-	final private Environment environment;
-
-    public UsuarioServiceImpl(UsuarioRepository repository, Environment environment) {
+    public UsuarioServiceImpl(UsuarioRepository repository) {
         this.repository = repository;
-		this.environment = environment;
     }
 
     @Override
-	@Transactional(readOnly = true)
 	public List<Usuarios> getAll(){
-		return ((List<Usuarios>) repository.findAll()).stream().map(users ->{
-			users.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
-			return users;
-		}).collect(Collectors.toList());
+		return repository.findAll();
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public Optional<Usuarios> getUsersById(int id) {
-		return repository.findById(id).map(users -> {
-			users.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
-			return users;
-		});
+		return repository.findById(id);
 	}
 
 	@Override
