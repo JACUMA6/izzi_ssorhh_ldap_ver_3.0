@@ -28,13 +28,13 @@ public class EmpleadoServiceImpl implements EmpleadoService{
     }
 
     @Override
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = true)
 	public List<Empleados> getAll() {
 		return repository.findAll();
 	}
 
 	@Override
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = true)
 	public Optional<Empleados> getUsuarioById(int id) {
 		return repository.findById(id);
 	}
