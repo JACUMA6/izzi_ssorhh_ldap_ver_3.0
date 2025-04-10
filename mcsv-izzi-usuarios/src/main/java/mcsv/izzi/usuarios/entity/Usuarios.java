@@ -18,6 +18,13 @@ public class Usuarios {
 	private String tpoUsuario;
 	private int usuarioId;
 
+	@Transient
+	private int port;
+
+	public Usuarios() {
+		super();
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -82,8 +89,11 @@ public class Usuarios {
 		this.usuarioId = usuarioId;
 	}
 
-	public Usuarios() {
-		super();
+	public int getPort() {
+		return port;
 	}
 
+	public void setPort(int port) {
+		this.port = port;
+	}
 }

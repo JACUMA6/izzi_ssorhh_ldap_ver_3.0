@@ -2,6 +2,7 @@ package mcsv.izzi.usuarios.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,11 +36,11 @@ public class UsuarioController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuarios> obtenerUsers(@PathVariable("id") int id){
-		Usuarios users = service.getUsersById(id);
-		if(users == null) {
-			return ResponseEntity.notFound().build();
+		Optional<Usuarios> users = service.getUsersById(id);
+		if(users.isPresent()) {
+			return ResponseEntity.ok(users.orElseThrow());
 		}
-		return ResponseEntity.ok(users);
+		return ResponseEntity.notFound().build();
 	}
 	
 	@PostMapping

@@ -9,6 +9,7 @@ public class Usuarios {
 	private String mtdoInicio;
 	private String tpoUsuario;
 	private int usuarioId;
+	private int port;
 
 	public String geteMail() {
 		return eMail;
@@ -66,8 +67,11 @@ public class Usuarios {
 		this.usuarioId = usuarioId;
 	}
 
-	public Usuarios() {
-		super();
+	public int getPort() {
+		return port;
 	}
 
+	public void setPort(int port) {
+		this.port = port;
+	}
 }
