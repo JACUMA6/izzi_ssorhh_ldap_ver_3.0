@@ -2,7 +2,6 @@ package mcsv.izzi.empleados.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +18,13 @@ import mcsv.izzi.empleados.services.impl.EmpleadoServiceImpl;
 @RequestMapping("/empleado")
 public class EmpleadoController {
 
-	@Autowired
-	private EmpleadoServiceImpl service;
+	final private EmpleadoServiceImpl service;
 
+    public EmpleadoController(EmpleadoServiceImpl service) {
+        this.service = service;
+    }
 
-	@GetMapping
+    @GetMapping
 	public ResponseEntity<List<Empleados>> listarUsuarios(){
 		List<Empleados> empleados = service.getAll();
 		if(empleados.isEmpty()) {

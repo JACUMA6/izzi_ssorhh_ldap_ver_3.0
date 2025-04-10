@@ -12,11 +12,14 @@ import mcsv.izzi.empleados.services.EmpleadoService;
 
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService{
-	
-	@Autowired
-	private EmpleadoRepository repository;
 
-	@Override
+	final private EmpleadoRepository repository;
+
+    public EmpleadoServiceImpl(EmpleadoRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
 	@Transactional(readOnly = false)
 	public List<Empleados> getAll() {
 		return repository.findAll();
