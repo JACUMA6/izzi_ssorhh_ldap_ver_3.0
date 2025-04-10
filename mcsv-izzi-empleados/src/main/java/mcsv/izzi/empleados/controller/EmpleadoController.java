@@ -1,7 +1,9 @@
 package mcsv.izzi.empleados.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import mcsv.izzi.empleados.models.Usuarios;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,5 +50,17 @@ public class EmpleadoController {
 		return ResponseEntity.ok(nuevoEmpleado);
 	}
 
+	@PostMapping("/usuario/{usuarioId}")
+	public ResponseEntity<Usuarios> guardarUsers(@PathVariable("usuarioId") int usuarioId, @RequestBody Usuarios users){
+		Usuarios nuevoCarro = service.saveUsers(usuarioId, users);
+		return ResponseEntity.ok(nuevoCarro);
+	}
+
+
+	@GetMapping("/todos/{usuarioId}")
+	public ResponseEntity<Map<String, Object>> listarTodosLosUsuarios(@PathVariable("usuarioId") int usuarioId){
+		Map<String,Object> resultado = service.getUsuarioAndEmpleados(usuarioId);
+		return ResponseEntity.ok(resultado);
+	}
 
 }

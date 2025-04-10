@@ -15,7 +15,7 @@ import mcsv.izzi.usuarios.entity.Usuarios;
 import mcsv.izzi.usuarios.services.UsuarioService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping
 public class UsuarioController {
 
 	final private UsuarioService service;
@@ -48,7 +48,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(newUser);
 	}
 	
-	@GetMapping("/usuario/{usuarioId}")
+	@GetMapping("/users/{usuarioId}")
 	public ResponseEntity<List<Usuarios>> listarUsuariosPorId(@PathVariable("usuarioId") int id){
 		List<Usuarios> users = service.byUsuarioId(id);
 		if(users.isEmpty()) {
