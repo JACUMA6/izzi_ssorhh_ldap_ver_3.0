@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import mcsv.izzi.usuarios.entity.Usuarios;
 import mcsv.izzi.usuarios.repository.UsuarioRepository;
 import mcsv.izzi.usuarios.services.UsuarioService;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
@@ -24,6 +25,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
+	@Transactional(readOnly = true)
 	public List<Usuarios> getAll(){
 		return ((List<Usuarios>) repository.findAll()).stream().map(users ->{
 			users.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
@@ -32,13 +34,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Optional<Usuarios> getUsersById(int id) {
 		return repository.findById(id).map(users -> {
 			users.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
 			return users;
 		});
 	}
-	
+
 	@Override
 	public Usuarios save(Usuarios users) {
 		Usuarios newUsers = repository.save(users);
