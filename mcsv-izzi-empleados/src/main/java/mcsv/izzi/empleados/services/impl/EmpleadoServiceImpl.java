@@ -3,6 +3,7 @@ package mcsv.izzi.empleados.services.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import mcsv.izzi.empleados.feignclients.UsuariosFeignClient;
 import mcsv.izzi.empleados.models.Usuarios;
@@ -34,8 +35,8 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 
 	@Override
 	@Transactional(readOnly = false)
-	public Empleados getUsuarioById(int id) {
-		return repository.findById(id).orElse(null);
+	public Optional<Empleados> getUsuarioById(int id) {
+		return repository.findById(id);
 	}
 
 	@Override
@@ -57,7 +58,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		Empleados empleados = repository.findById(usuarioId).orElse(null);
 
 		if(empleados == null) {
-			resultado.put("Mensaje", "El usuario no existe");
+			resultado.put("Mensaje", "El empleado no existe");
 			return resultado;
 		}
 

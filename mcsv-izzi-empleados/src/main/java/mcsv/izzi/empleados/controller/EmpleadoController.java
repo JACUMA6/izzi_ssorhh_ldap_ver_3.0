@@ -2,6 +2,7 @@ package mcsv.izzi.empleados.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import mcsv.izzi.empleados.models.Usuarios;
 import org.springframework.http.ResponseEntity;
@@ -37,11 +38,11 @@ public class EmpleadoController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Empleados> obtenerUsuario(@PathVariable("id") int id){
-		Empleados empleados = service.getUsuarioById(id);
-		if(empleados == null) {
-			return ResponseEntity.notFound().build();
+		Optional<Empleados> empleados = service.getUsuarioById(id);
+		if(empleados.isPresent()) {
+			return ResponseEntity.ok(empleados.orElseThrow());
 		}
-		return ResponseEntity.ok(empleados);
+		return ResponseEntity.notFound().build();
 	}
 	
 	@PostMapping
