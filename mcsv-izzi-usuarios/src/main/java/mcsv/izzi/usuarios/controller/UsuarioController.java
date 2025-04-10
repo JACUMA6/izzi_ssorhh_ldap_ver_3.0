@@ -3,7 +3,6 @@ package mcsv.izzi.usuarios.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +18,14 @@ import mcsv.izzi.usuarios.services.UsuarioService;
 @RequestMapping("/users")
 public class UsuarioController {
 
-	@Autowired
-	private UsuarioService service;
-	
-	@GetMapping
-	public ResponseEntity<List<Usuarios>> listarCarros(){
+	final private UsuarioService service;
+
+    public UsuarioController(UsuarioService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+	public ResponseEntity<List<Usuarios>> listarUsuarios(){
 		List<Usuarios> users = service.getAll();
 		if(users.isEmpty()) {
 			return ResponseEntity.noContent().build();
