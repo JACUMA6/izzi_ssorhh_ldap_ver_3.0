@@ -53,8 +53,8 @@ public class EmpleadoController {
 
 	@PostMapping("/usuario/{usuarioId}")
 	public ResponseEntity<Usuarios> guardarUsers(@PathVariable("usuarioId") int usuarioId, @RequestBody Usuarios users){
-		Usuarios nuevoCarro = service.saveUsers(usuarioId, users);
-		return ResponseEntity.ok(nuevoCarro);
+		Usuarios newUser = service.saveUsers(usuarioId, users);
+		return ResponseEntity.ok(newUser);
 	}
 
 
