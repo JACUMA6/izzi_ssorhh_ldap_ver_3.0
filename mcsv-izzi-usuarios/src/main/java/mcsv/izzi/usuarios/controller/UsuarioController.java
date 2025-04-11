@@ -15,7 +15,7 @@ import mcsv.izzi.usuarios.entity.Usuarios;
 import mcsv.izzi.usuarios.services.UsuarioService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping
 public class UsuarioController {
 
 	final private UsuarioService service;

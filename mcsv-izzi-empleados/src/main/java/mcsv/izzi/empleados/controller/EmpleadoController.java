@@ -1,7 +1,9 @@
 package mcsv.izzi.empleados.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import mcsv.izzi.empleados.models.Usuarios;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import mcsv.izzi.empleados.entity.Empleados;
 import mcsv.izzi.empleados.services.impl.EmpleadoServiceImpl;
 
-
+/*
+* No podemos ejecutar esta aplicacion ya que se tendria que cambiar la forma en la que recibe
+* los parametros la BBDD
+* */
 @RestController
 @RequestMapping("/empleado")
 public class EmpleadoController {
@@ -47,6 +52,5 @@ public class EmpleadoController {
 		Empleados nuevoEmpleado = service.save(empleados);
 		return ResponseEntity.ok(nuevoEmpleado);
 	}
-
 
 }

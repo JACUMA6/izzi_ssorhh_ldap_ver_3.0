@@ -1,6 +1,7 @@
 package mcsv.izzi.empleados.entity;
 
 import jakarta.persistence.*;
+import mcsv.izzi.empleados.models.Usuarios;
 
 @Entity
 @Table(name="employees")
@@ -101,7 +102,53 @@ public class Empleados {
 	@Column(name = "insertion_date")
 	private String insertionDate;
 
-	public Empleados() {
+	private Usuarios usuarios;
+
+	public Empleados(){
+
+	}
+
+	public Empleados(int idSSFF, String descMotvo, String idSubmotivo, String descSubMotvo, String nombre,
+					 String aPaterno, String aMaterno, String fechaNac, String genero, String curpNac,
+					 int idRazonSocial, String razonSocial, int numEmplLab, int idCodPuesto, String codPuesto,
+					 String ciaOutsourcing, String estatus, String fecIngreso, String idPlaza, String descPlaza,
+					 String subNvlFuncional, int cveRegion, String region, int idDepto, int idCtoTbjo,
+					 String ctoTrabajo, String tpoEmpleo, String nvlFuncional, String claseEmpleado, int idSsffJI,
+					 String nomEmplJI, String emailJI, String insertionDate, Usuarios usuarios) {
+		this.idSSFF = idSSFF;
+		this.descMotvo = descMotvo;
+		this.idSubmotivo = idSubmotivo;
+		this.descSubMotvo = descSubMotvo;
+		this.nombre = nombre;
+		this.aPaterno = aPaterno;
+		this.aMaterno = aMaterno;
+		this.fechaNac = fechaNac;
+		this.genero = genero;
+		this.curpNac = curpNac;
+		this.idRazonSocial = idRazonSocial;
+		this.razonSocial = razonSocial;
+		this.numEmplLab = numEmplLab;
+		this.idCodPuesto = idCodPuesto;
+		this.codPuesto = codPuesto;
+		this.ciaOutsourcing = ciaOutsourcing;
+		this.estatus = estatus;
+		this.fecIngreso = fecIngreso;
+		this.idPlaza = idPlaza;
+		this.descPlaza = descPlaza;
+		this.subNvlFuncional = subNvlFuncional;
+		this.cveRegion = cveRegion;
+		this.region = region;
+		this.idDepto = idDepto;
+		this.idCtoTbjo = idCtoTbjo;
+		this.ctoTrabajo = ctoTrabajo;
+		this.tpoEmpleo = tpoEmpleo;
+		this.nvlFuncional = nvlFuncional;
+		this.claseEmpleado = claseEmpleado;
+		this.idSsffJI = idSsffJI;
+		this.nomEmplJI = nomEmplJI;
+		this.emailJI = emailJI;
+		this.insertionDate = insertionDate;
+		this.usuarios = usuarios;
 	}
 
 	public int getIdSSFF() {
@@ -366,5 +413,13 @@ public class Empleados {
 
 	public void setInsertionDate(String insertionDate) {
 		this.insertionDate = insertionDate;
+	}
+
+	public Usuarios getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Usuarios usuarios) {
+		this.usuarios = usuarios;
 	}
 }
