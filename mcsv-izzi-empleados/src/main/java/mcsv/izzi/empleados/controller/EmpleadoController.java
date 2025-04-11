@@ -18,6 +18,8 @@ import mcsv.izzi.empleados.services.impl.EmpleadoServiceImpl;
 /*
 * No podemos ejecutar esta aplicacion con WebClient ya que se tendria que cambiar la forma en la que recibe
 * los parametros la BBDD
+*
+* NOTA: PENDIENTE POR DEFINIR
 * */
 @RestController
 @RequestMapping("/empleado")
