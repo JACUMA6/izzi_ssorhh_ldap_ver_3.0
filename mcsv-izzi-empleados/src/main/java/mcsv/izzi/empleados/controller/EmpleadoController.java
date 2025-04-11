@@ -16,7 +16,7 @@ import mcsv.izzi.empleados.entity.Empleados;
 import mcsv.izzi.empleados.services.impl.EmpleadoServiceImpl;
 
 /*
-* No podemos ejecutar esta aplicacion ya que se tendria que cambiar la forma en la que recibe
+* No podemos ejecutar esta aplicacion con WebClient ya que se tendria que cambiar la forma en la que recibe
 * los parametros la BBDD
 * */
 @RestController
