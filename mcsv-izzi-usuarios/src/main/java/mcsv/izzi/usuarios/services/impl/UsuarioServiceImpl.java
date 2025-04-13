@@ -1,7 +1,10 @@
 package mcsv.izzi.usuarios.services.impl;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import mcsv.izzi.usuarios.entity.Usuarios;
@@ -13,18 +16,18 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	final private UsuarioRepository repository;
 
-    public UsuarioServiceImpl(UsuarioRepository repository) {
-        this.repository = repository;
-    }
+	public UsuarioServiceImpl(UsuarioRepository repository) {
+		this.repository = repository;
+	}
 
-    @Override
+	@Override
 	public List<Usuarios> getAll(){
 		return repository.findAll();
 	}
 
 	@Override
-	public Usuarios getUsersById(int id) {
-		return repository.findById(id).orElse(null);
+	public Optional<Usuarios> getUsersById(int id) {
+		return repository.findById(id);
 	}
 
 	@Override
