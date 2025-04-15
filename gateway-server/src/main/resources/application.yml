@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: mcsv-izzi-empleados
+        uri: lb://mcsv-izzi-empleados
+        predicates:
+        - Path=/api/employees/**
+        filters:
+        - StripPrefix=2
+      - id: mcsv-izzi-usuarios
+        uri: lb://mcsv-izzi-usuarios
+        predicates:
+        - Path=/api/users/**
+        filters:
+        - StripPrefix=2
