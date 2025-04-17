@@ -24,7 +24,8 @@ public class SampleGlobalFilter implements GlobalFilter{
             logger.info("ejecutando filtro POST response");
 
             exchange.getResponse().getCookies().add("color", ResponseCookie.from("color", "red").build());
-            exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
+            //exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
+            exchange.getResponse().getHeaders().setContentType(MediaType.APPLICATION_JSON);
         }));
     }
 
